@@ -1,0 +1,25 @@
+﻿<Window x:Class="zhtv.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zhtv"
+        mc:Ignorable="d"
+        Title="Zither Harp TV" Height="450" Width="800" ResizeMode="NoResize">
+    <StackPanel Margin="5">
+        <Label Content="_ID livestream:" Margin="5"></Label>
+        <TextBox x:Name="tbxVideoID" Margin="0 5 5 5" HorizontalAlignment="Stretch"></TextBox>
+        <Label Content="_Sheet:" ></Label>
+        <TextBox x:Name="tbxSheetID" Margin="0 5 5 5">1ICOivODkrc4A86I1JVEQ0sVEa-8XriKoG5O4116xiKo</TextBox>
+        <TextBlock Margin="5">Page</TextBlock>
+        <TextBox x:Name="tbxSongSheet" Margin="0 5 5 5">Vietnamese</TextBox>
+        <TextBlock Margin="5">Range</TextBlock>
+        <TextBox x:Name="tbxSheetRange" Margin="0 5 5 5">A2:F</TextBox>
+        <TextBlock Margin="5">Page</TextBlock>
+        <TextBox x:Name="tbxInfoSheet" Margin="0 5 5 5">Info</TextBox>
+        <TextBlock Margin="5">Range</TextBlock>
+        <TextBox x:Name="tbxInfoSheetRange" Margin="0 5 5 5">A2:B</TextBox>
+        <WebBrowser x:Name="webPlayer" Height="0" Width="0" />
+        <Button x:Name="btnStart" Click="btnStart_Click">Start</Button>
+    </StackPanel>
+</Window>
