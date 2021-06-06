@@ -5,9 +5,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Dictionaries/ChatResource.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="Resources/Dictionaries/MusicResource.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="Resources/Dictionaries/MainResource.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Resources/Dictionaries/ChatResource.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/MusicResource.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/MainResource.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/ViewModelDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

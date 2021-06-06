@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using zhtv.ViewModels;
+using zhtv.Models;
 
 namespace zhtv.Views
 {
@@ -11,9 +11,14 @@ namespace zhtv.Views
 
             Loaded += (s, e) =>
             {
-                new Interface(this);
-                new Timer(this, mainWindow);
+                new Screen(this);
+                new Timer(this);
             };
-        }
+
+            Closing += (s, e) =>
+            {
+                mainWindow.Show();
+            };
+        }  
     }
 }

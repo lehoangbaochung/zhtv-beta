@@ -3,7 +3,6 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,12 +11,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using zhtv.Models;
 
-namespace zhtv.ViewModels
+namespace zhtv.Models
 {
     class Stream
     {
-        static readonly Dictionary<string, OrderInfo> OrderDictionary = new Dictionary<string, OrderInfo>();
-        static readonly Random rd = new Random();
+        static readonly Dictionary<string, Message> OrderDictionary = new Dictionary<string, Message>();
         static YouTubeService youtubeService;
         static string liveChatId = null;
         static int count = 0;
@@ -60,14 +58,15 @@ namespace zhtv.ViewModels
         {
             foreach (var item in MessageList(videoId, "snippet,authorDetails").Items)
             {
-                if (int.TryParse(TextTrimming(item.Snippet.DisplayMessage), out int id) && !OrderDictionary.ContainsKey(item.Id)
-                    && Player.Library.Find(s => s.ID == id) != null)
+                //var id = new Message(item.Snippet.DisplayMessage).SongId;
+
+                if (!OrderDictionary.ContainsKey(item.Id))
                 {
-                    OrderDictionary.Add(item.Id, new OrderInfo()
+                    OrderDictionary.Add(item.Id, new Message()
                     {
                         UserID = item.AuthorDetails.ChannelId,
                         UserName = item.AuthorDetails.DisplayName,
-                        SongID = id
+                        
                     });
                 }
             }
@@ -75,7 +74,7 @@ namespace zhtv.ViewModels
             if (OrderDictionary.Count > count)
             {
                 for (int i = count; i < OrderDictionary.Count; i++) 
-                    Player.OrderSong(OrderDictionary.ElementAt(i).Value);
+                    //Player.OrderSong(OrderDictionary.ElementAt(i).Value);
 
                 count = OrderDictionary.Count;
             }
@@ -90,16 +89,16 @@ namespace zhtv.ViewModels
 
             if (zm.IsMatch(text)) substr = text.Substring(3);
 
-            if (zmt.IsMatch(text))
-            {
-                foreach (var item in Player.Library)
-                {
-                    if (string.Compare(item.Name, text.Substring(4), true) == 0)
-                        substr = item.ID.ToString();
-                    else if (string.Compare(item.Name + " " + item.Artist, text.Substring(4), true) == 0)
-                        substr = item.ID.ToString();
-                }
-            }
+            //if (zmt.IsMatch(text))
+            //{
+            //    foreach (var item in Player.Library)
+            //    {
+            //        if (string.Compare(item.Name, text.Substring(4), true) == 0)
+            //            substr = item.ID.ToString();
+            //        else if (string.Compare(item.Name + " " + item.Artist, text.Substring(4), true) == 0)
+            //            substr = item.ID.ToString();
+            //    }
+            //}
 
             return substr;
         }
